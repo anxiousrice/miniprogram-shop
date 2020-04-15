@@ -12,8 +12,8 @@ import regeneratorRuntime from '../../libs/runtime/runtime'
 
 //3、 点击 加入购物车
 // 1、先绑定点击事件
-//2、获取缓存中的购物车数据 数组格式
-//3、先判断 当前的商品是否已经存在于 购物车
+// 2、获取缓存中的购物车数据 数组格式
+// 3、先判断 当前的商品是否已经存在于 购物车
 // 4、已经存在 修改商品的数据 执行购物车数量 ++  重新把购物车数组填回缓存中
 // 5、不存在购物车的数组中 直接给购物车数组添加一个新元素 新元素 带上 购买数量属性 num 重新把购物车数组填回缓存中
 // 6、弹出提示
@@ -50,7 +50,7 @@ Page({
                 // iphone 部分手机 不识别 webp格式图片
                 // 最好找到后台 让他进行修改
                 // 临时自己改 确保后台存在 1.webp =》 1.jpg 
-                goods_introduce: res.message.goods_introduce.replace(/\.webp/g, '.jpg'),
+                goods_introduce: res.message.goods_introduce.replace(/\.webp/g, '.jpg'),//正则 g全部替换
                 goods_price: res.message.goods_price,
                 goods_name: res.message.goods_name
             }
@@ -69,6 +69,7 @@ Page({
     handlePreviewImage(e) {
         console.log(e)
         let url = e.currentTarget.dataset.url;
+        //map返回新的数组
         let urls = this.data.goodsDetail.pics.map((item) => {
             return item.pics_mid
         });

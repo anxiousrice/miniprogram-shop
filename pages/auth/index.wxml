@@ -1,2 +1,4 @@
-<!--pages/auth/index.wxml-->
-<text>pages/auth/index.wxml</text>
+<button open-type="getUserInfo" bindtap="handleGetUserInfo" type="primary">
+    支付授权
+</button>
+  

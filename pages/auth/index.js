@@ -1,66 +1,35 @@
 // pages/auth/index.js
+// 引入封装的js 请求模块
+import { request } from '../../request/index.js'
+// 使用 es7 中的 async 和 await 方法
+import regeneratorRuntime from '../../libs/runtime/runtime'
+import { login, showToast } from "../../utils/aysncWx.js"
 Page({
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
+    /**
+     * 页面的初始数据
+     */
+    data: {
 
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+    },
+    async handleGetUserInfo(e) {
+        // console.log(e);
+        // 1 获取用书信息
+        // 2 获取小程序登陆成功后的code
+        // 3 发送请求， 获取用户的tOken
+        try {
+            const { encrytedData, rawData, iv, signature } = e.detail;
+            const { code } = await login();
+            const loginParams = { encrytedData, rawData, iv, signature };
+            // console.log(code)
+            const res = await request({ url: "/users/wxlogin", data: loginParams, method: "post" });
+            console.log(res)
+            wx.setStorageSync("token", token);
+            wx.navigateBack({
+                delta: 1
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
 })

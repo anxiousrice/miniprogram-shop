@@ -1,2 +1,4 @@
-<!--pages/login/index.wxml-->
-<text>pages/login/index.wxml</text>
+<button type="primary" open-type="getUserInfo" bindtap="getUseInfo" plain>
+    登录授权
+</button>
+  

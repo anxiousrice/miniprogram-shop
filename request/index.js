@@ -1,6 +1,11 @@
 //同时发送异步代码的次数
 let ajaxTimes = 0;
 export const request = (params) => {
+    //使用支付时，自动添加头
+    let header = {...params.header };
+    if (params.url.includes("/my/")) {
+        header["Authorization"] = wx.wx.getStorageSync("token");
+    }
     ajaxTimes++ //发送一次请求就加一次
     // 在请求 数据回来之前 显示一个加载中
     wx.showLoading({
@@ -12,6 +17,7 @@ export const request = (params) => {
     return new Promise((resolve, reject) => {
         wx.request({
             ...params,
+            header: header,
             url: baseUrl + params.url,
             success: (result) => {
                 resolve(result);

@@ -15,8 +15,8 @@ page {
   display: flex;
   align-items: center;
   padding-left: 20rpx;
-  border-top: 2rpx solid var(--themeColor);
-  border-bottom: 2rpx solid var(--themeColor);
+  border-top: 2rpx solid red;
+  border-bottom: 2rpx solid red;
 }
 .cart_main {
   display: flex;
@@ -28,7 +28,7 @@ page {
   flex: 1;
   display: flex;
   align-items: center;
-  color: var(--themeColor);
+  color: red;
 }
 .cart_main .cart_img_warp {
   margin-right: 20rpx;
@@ -56,7 +56,7 @@ page {
   align-items: center;
 }
 .cart_main .cart_info_wrap .goods_price_wrap .goods_price {
-  color: var(--themeColor);
+  color: red;
   font-weight: bold;
 }
 .cart_main .cart_info_wrap .goods_price_wrap .cart_num_tools {
@@ -99,7 +99,7 @@ page {
   font-size: 32rpx;
 }
 .footer_tools .total_price .total text {
-  color: var(--themeColor);
+  color: red;
 }
 .footer_tools .pay {
   flex: 3;
@@ -108,6 +108,6 @@ page {
   align-items: center;
   height: 100%;
   font-size: 40rpx;
-  color: white;
-  background-color: var(--themeColor);
+  color: #ffffff;
+  background-color: red;
 }

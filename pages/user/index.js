@@ -1,66 +1,43 @@
+import { showToast } from "../../utils/aysncWx.js"
+
 // pages/user/index.js
 Page({
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
+    /**
+     * 页面的初始数据
+     */
+    data: {
+        // 用户信息
+        userInfo: [],
+        // 收藏商品的数量
+        collectNum: 0
+    },
 
-  },
+    onShow() {
+        //获取缓存中的 用户信息
+        let userInfo = wx.getStorageSync('userInfo');
+        console.log(userInfo)
+        this.setData({
+            userInfo
+        });
+        //获取 缓存中的 收藏商品数组
+        let collect = wx.getStorageSync("collect");
+        // 将缓存中的商品数量设置到 data中
+        this.setData({
+            collectNum: collect.length
+        });
+    },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+    //跳转到登录页面
+    handleLogin() {
+        wx.navigateTo({
+            url: '/pages/login/index',
+        });
+    },
 
-  },
+    // 提示用户 功能还没有实现
+    commonToast() {
+        showToast({ title: "该功能还没有实现！" });
+    }
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

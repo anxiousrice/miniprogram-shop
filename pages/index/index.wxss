@@ -1,5 +1,5 @@
 view{
-  color: var(--themeColor);
+  color: red;
 }
 .index_nav {
   width: 750rpx;
